@@ -2,15 +2,35 @@
 
 # make it executable with: chmod +x install-setup.sh
 
+# Function to install tmux based on the operating system
+install_tmux() {
+    case "$OSTYPE" in
+        darwin*) 
+            # MacOS
+            echo "Using Homebrew to install tmux on macOS"
+            brew install tmux
+            ;;
+        linux*)   
+            # Linux
+            echo "Using APT to install tmux on Linux"
+            sudo apt update && sudo apt install -y tmux
+            ;;
+        *)        
+            echo "Unsupported operating system for this script"
+            return 1
+            ;;
+    esac
+}
+
 # Check if tmux is installed, install if not
 if ! command -v tmux &> /dev/null; then
     echo "tmux could not be found, installing..."
-    brew install tmux
+    install_tmux
 else
     echo "tmux is already installed."
 fi
 
-# Define the target directory and the source file
+# Define the target directory and the source file for Alacritty
 target_dir="$HOME/.config/alacritty"
 source_file="$HOME/dotfiles/alacritty.toml"
 link_file="$target_dir/alacritty.toml"
@@ -21,7 +41,7 @@ if [ ! -d "$target_dir" ]; then
     mkdir -p "$target_dir"
 fi
 
-# Create or update the symbolic link
+# Create or update the symbolic link for Alacritty config
 if [ -L "$link_file" ]; then
     echo "Updating existing symbolic link: $link_file"
     # Remove existing symbolic link to ensure it can be updated
@@ -30,8 +50,18 @@ else
     echo "Creating new symbolic link: $link_file"
 fi
 
-# Create the symbolic link
+# Create the symbolic link for Alacritty config
 ln -s "$source_file" "$link_file"
+echo "Symbolic link for Alacritty config created successfully."
 
-echo "Symbolic link created successfully."
+# Copy .tmux.conf from dotfiles to home directory
+tmux_conf_source="$HOME/dotfiles/.tmux.conf"
+tmux_conf_target="$HOME/.tmux.conf"
 
+if [ -f "$tmux_conf_source" ]; then
+    echo "Copying .tmux.conf to home directory..."
+    cp "$tmux_conf_source" "$tmux_conf_target"
+    echo ".tmux.conf copied successfully."
+else
+    echo ".tmux.conf does not exist in dotfiles directory, skipping copy."
+fi
