@@ -65,3 +65,14 @@ if [ -f "$tmux_conf_source" ]; then
 else
     echo ".tmux.conf does not exist in dotfiles directory, skipping copy."
 fi
+
+# Copy .vimrc to the directory above where the script is executed
+vimrc_source="$HOME/dotfiles/.vimrc"
+vimrc_target="$(dirname "$(pwd)")/.vimrc"  # $(dirname "$(pwd)") gets the parent directory of the current directory
+
+if [ -f "$vimrc_source" ]; then
+    cp "$vimrc_source" "$vimrc_target" && echo ".vimrc copied to parent directory successfully."
+else
+    echo ".vimrc not found in dotfiles directory, skipping copy."
+fi
+
