@@ -3,6 +3,6 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/daniel/.nvm/versions/node/v18.16.1/bin
 
-alias vf='fzf --preview "bat --style=numbers --color=always {}" | xargs -n 1 vim'
+alias vf='fzf --preview "batcat --style=numbers --color=always {}" | xargs -o -n 1 vim'
 
 alias v=nvim
