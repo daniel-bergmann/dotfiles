@@ -101,30 +101,3 @@ endfunction
 
 command! React call InsertReactTemplate()
 
-" Vue
-
-function! InsertVueTemplate()
-    call setline('.', '<template>')
-    call append(line('.'), [
-    \ '  <div>',
-    \ '  </div>',
-    \ '</template>',
-    \ '',
-    \ '<script>',
-    \ 'export default {',
-    \ '  name: "ComponentName",',
-    \ '  data() {',
-    \ '    return {};',
-    \ '  }',
-    \ '}',
-    \ '</script>',
-    \ '',
-    \ '<style scoped>',
-    \ '',
-    \ '</style>'
-    \ ])
-    startinsert!
-endfunction
-
-command! Vue call InsertVueTemplate()
-
