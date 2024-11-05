@@ -1,4 +1,4 @@
-" Vim config
+" Vim config 2023
 
 " Download vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -8,7 +8,7 @@
 call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'preservim/nerdtree'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
 Plug 'vim-scripts/AutoComplPop'
 call plug#end()
 
@@ -34,17 +34,25 @@ inoremap ( ()<Left>
 inoremap ' ''<Left>
 inoremap " ""<Left>
 
-"go to center of file whwn press ggg"
+" Go to center of file when pressing ggg
 nnoremap ggg :execute "normal! " . (line("$") / 2) . "G"<CR>
 
 " +++++++++++++++++++++++++++++++"
-" enable color themes
+" Enable color themes
+" Make sure to enable true color support and set background
+
+" Enable 256-color mode if GUI is not running
 if !has('gui_running')
     set t_Co=256
 endif
-" enable true color support
+
+" Enable true color support
 set termguicolors
+
+" Set background to dark for gruvbox compatibility
 set background=dark
+
+" Set colorscheme after configuring color settings
 colorscheme gruvbox
 
 " +++++++++++++++++++++++++++++++"
@@ -54,10 +62,6 @@ augroup CustomAutoCommands
     autocmd!
     " Cursorline Highlight
     autocmd ColorScheme * highlight Cursorline cterm=bold ctermbg=black
-    " Autosave with a message display
-    set updatetime=2000
-    autocmd CursorHold * silent! wall | echo "Autosaved at " . strftime("%H:%M:%S")
-    autocmd InsertLeave * write | echo "File saved!"
 augroup END
 
 let g:prettier#autoformat = 1
@@ -66,11 +70,14 @@ let g:prettier#autoformat_require_pragma = 0
 " NerdTree
 nnoremap °° :NERDTreeToggle<CR>
 
-"++++++++++++++++++++++++++++++++
+" Yank to system clipboard
+vnoremap <C-c> "+y
+nnoremap <C-c> "+yy
 
+" ++++++++++++++++++++++++++++++++
 " Code templates
 
-"HTML
+" HTML
 function! InsertHTMLTemplate()
     call setline('.', '<!DOCTYPE html>')
     call append(line('.'), [
@@ -89,15 +96,22 @@ function! InsertHTMLTemplate()
 endfunction
 
 command! HTML call InsertHTMLTemplate()
-"
 
-
-"React 
+" React 
 function! InsertReactTemplate()
     call setline('.', "import React from 'react'")
-    call append(line('.'), ['', 'function ComponentName() {', '', '  return (', '    <div>ComponentName</div>', '  )', '}', '', 'export default ComponentName'])
+    call append(line('.'), [
+    \ '',
+    \ 'function ComponentName() {',
+    \ '',
+    \ '  return (',
+    \ '    <div>ComponentName</div>',
+    \ '  )',
+    \ '}',
+    \ '',
+    \ 'export default ComponentName'
+    \ ])
     startinsert!
 endfunction
 
 command! React call InsertReactTemplate()
-
