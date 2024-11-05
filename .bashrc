@@ -1,8 +1,4 @@
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/Users/daniel/.nvm/versions/node/v18.16.1/bin
-
-alias vf='fzf --preview "batcat --style=numbers --color=always {}" | xargs -o -n 1 vim'
-
-alias v=nvim
+# mac OS
+# alias vf='fzf --preview "bat --style=numbers --color=always {}" | xargs -o -n 1 vim'
+# ubuntu
+# alias vf='fzf --preview "batcat --style=numbers --color=always {}" | xargs -o -n 1 vim'
