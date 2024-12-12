@@ -12,7 +12,7 @@ y = 0
 [general]
 
 # themes from https://github.com/alacritty/alacritty-theme
-import = ["~/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+import = ["~/.dotfiles/alacritty/gruvbox_dark.toml"]
 
 [terminal]
 
