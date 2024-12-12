@@ -1,0 +1,20 @@
+[font]
+size = 25
+
+
+[window]
+decorations = "none"
+
+[window.padding]
+x = 7
+y = 0
+
+[general]
+
+# themes from https://github.com/alacritty/alacritty-theme
+import = ["~/.config/alacritty/themes/themes/gruvbox_dark.toml"]
+
+[terminal]
+
+[terminal.shell]
+program = "tmux"
