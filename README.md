@@ -2,9 +2,12 @@
 
 ## alacritty.toml
 
-### copy to the config dir and create a symbolic link
+### make and copy .toml file to the alacritty config dir and create a symbolic link
 ```
-ln -s ~/dotfiles/alacritty/alacritty.toml ~/.config/alacritty.toml
+mkdir ~/.config/alacritty/
+```
+```
+ln -s ~/dotfiles/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 ```
 
 ### .vimrc
