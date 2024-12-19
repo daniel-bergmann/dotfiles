@@ -13,7 +13,7 @@ Plug 'vim-scripts/AutoComplPop'
 call plug#end()
 
 " +++++++++++++++++++++++++++++++"
-set mouse=a
+set mouse=v
 syntax on
 set number
 set cursorline
