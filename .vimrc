@@ -8,9 +8,9 @@
 call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'preservim/nerdtree'
-Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
 Plug 'vim-scripts/AutoComplPop'
 Plug 'alvan/vim-closetag'
+" Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
 call plug#end()
 
 " +++++++++++++++++++++++++++++++"
@@ -34,6 +34,9 @@ inoremap [ []<Left>
 inoremap ( ()<Left>
 inoremap ' ''<Left>
 inoremap " ""<Left>
+
+autocmd SwapExists * let v:swapchoice = "o"
+
 
 " Go to center of file when pressing ggg
 nnoremap ggg :execute "normal! " . (line("$") / 2) . "G"<CR>
@@ -65,11 +68,16 @@ augroup CustomAutoCommands
     autocmd ColorScheme * highlight Cursorline cterm=bold ctermbg=black
 augroup END
 
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
+" Prettier 
+"autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.json,*.css,*.scss,*.md Prettier
+"let g:prettier#autoformat = 1
+"let g:prettier#autoformat_require_pragma = 0
 
 " NerdTree
 nnoremap ° :NERDTreeToggle<CR>
+let NERDTreeShowHidden=1
+
+
 
 " Yank to system clipboard
 vnoremap <C-c> "+y
