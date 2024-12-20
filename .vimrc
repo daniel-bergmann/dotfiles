@@ -10,10 +10,11 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
 Plug 'vim-scripts/AutoComplPop'
+Plug 'alvan/vim-closetag'
 call plug#end()
 
 " +++++++++++++++++++++++++++++++"
-set mouse=v
+set mouse=a
 syntax on
 set number
 set cursorline
@@ -68,11 +69,31 @@ let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
 " NerdTree
-nnoremap °° :NERDTreeToggle<CR>
+nnoremap ° :NERDTreeToggle<CR>
 
 " Yank to system clipboard
 vnoremap <C-c> "+y
 nnoremap <C-c> "+yy
+
+" Enable vim-closetag for specific file types
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.jsx,*.js'
+let g:closetag_filetypes = 'html,xhtml,phtml,php,javascriptreact,javascript'
+let g:closetag_xhtml_filenames = '*.xhtml,*.jsx,*.js'
+
+" Ensure compatibility with case-sensitive empty tags
+let g:closetag_emptyTags_caseSensitive = 1
+
+" Shortcut for closing tags
+let g:closetag_shortcut = '>'
+
+" Configure JSX and TSX regions for React files
+let g:closetag_regions = {
+      \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+      \ 'javascript.jsx': 'jsxRegion',
+      \ 'javascriptreact': 'jsxRegion'
+      \ }
+
+
 
 " ++++++++++++++++++++++++++++++++
 " Code templates
@@ -97,21 +118,3 @@ endfunction
 
 command! HTML call InsertHTMLTemplate()
 
-" React 
-function! InsertReactTemplate()
-    call setline('.', "import React from 'react'")
-    call append(line('.'), [
-    \ '',
-    \ 'function ComponentName() {',
-    \ '',
-    \ '  return (',
-    \ '    <div>ComponentName</div>',
-    \ '  )',
-    \ '}',
-    \ '',
-    \ 'export default ComponentName'
-    \ ])
-    startinsert!
-endfunction
-
-command! React call InsertReactTemplate()
