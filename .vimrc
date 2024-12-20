@@ -70,6 +70,8 @@ augroup CustomAutoCommands
     " Cursorline Highlight
     autocmd ColorScheme * highlight Cursorline cterm=bold ctermbg=black
     autocmd BufNewFile,BufRead *.php set filetype=php
+   " Refreshing nerdtree when a file is saved, added or changed
+    autocmd BufWritePost * NERDTreeRefreshRoot
 augroup END
 
 " Prettier 
