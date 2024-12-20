@@ -11,7 +11,7 @@ Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'alvan/vim-closetag'
-"Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
+Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
 call plug#end()
 
 " +++++++++++++++++++++++++++++++"
@@ -75,9 +75,9 @@ augroup CustomAutoCommands
 augroup END
 
 " Prettier 
-"autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.json,*.css,*.scss,*.md Prettier
-"let g:prettier#autoformat = 1
-"let g:prettier#autoformat_require_pragma = 0
+autocmd BufWritePre *.js,*.jsx,*.ts,*.tsx,*.json,*.css,*.scss,*.md Prettier
+let g:prettier#autoformat = 1
+let g:prettier#autoformat_require_pragma = 0
 
 " NerdTree
 nnoremap ° :NERDTreeToggle<CR>
