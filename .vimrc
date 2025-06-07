@@ -6,7 +6,7 @@
 " +++++++++++++++++++++++++++++++"
 " Plugins
 call plug#begin('~/.vim/plugged')
-" Plug 'gruvbox-community/gruvbox'
+Plug 'gruvbox-community/gruvbox'
 Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/AutoComplPop'
@@ -52,13 +52,13 @@ if !has('gui_running')
  endif
 
 " Enable true color support
-" set termguicolors
+ set termguicolors
 
 " Set background to dark for gruvbox compatibility
-" set background=dark
+ set background=dark
 
 " Set colorscheme after configuring color settings
-" colorscheme gruvbox
+ colorscheme gruvbox
 
 " Enable filetype-specific plugins and settings
 filetype plugin indent on
