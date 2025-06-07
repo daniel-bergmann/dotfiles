@@ -12,6 +12,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/AutoComplPop'
 Plug 'alvan/vim-closetag'
 Plug 'prettier/vim-prettier', { 'do': 'npm install --frozen-lockfile --production' }
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 " +++++++++++++++++++++++++++++++"
