@@ -81,7 +81,8 @@ let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 
 " NerdTree
-nnoremap ° :NERDTreeToggle<CR>
+let mapleader = " "
+nnoremap <leader>e :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 
 " Yank to system clipboard
