@@ -1,10 +1,8 @@
-" Vim config 2023
-
-" Download vim-plug
 " curl -fLo ~/.vim/autoload/plug.vim --create-dirs \https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 " +++++++++++++++++++++++++++++++"
 " Plugins
+
 call plug#begin('~/.vim/plugged')
 Plug 'gruvbox-community/gruvbox'
 Plug 'preservim/nerdtree'
@@ -16,6 +14,7 @@ Plug 'tpope/vim-commentary'
 call plug#end()
 
 " +++++++++++++++++++++++++++++++"
+
 set mouse=a
 syntax on
 set number
@@ -43,16 +42,11 @@ cmap w!! %!sudo tee > /dev/null
 nnoremap ggg :execute "normal! " . (line("$") / 2) . "G"<CR>
 
 " +++++++++++++++++++++++++++++++"
-" Enable color themes
-" Make sure to enable true color support and set background
 
 " Enable 256-color mode if GUI is not running
 if !has('gui_running')
    set t_Co=256
  endif
-
-" Enable true color support
-" set termguicolors
 
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
@@ -60,13 +54,8 @@ if exists('+termguicolors')
     set termguicolors
 endif
 
-" Set background to dark for gruvbox compatibility
- set background=dark
-
-" Set colorscheme after configuring color settings
- colorscheme gruvbox
-
-" Enable filetype-specific plugins and settings
+set background=dark
+colorscheme gruvbox
 filetype plugin indent on
 
 " +++++++++++++++++++++++++++++++"
