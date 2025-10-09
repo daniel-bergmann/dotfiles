@@ -95,6 +95,15 @@ let NERDTreeShowHidden=1
 vnoremap <C-c> "+y
 nnoremap <C-c> "+yy
 
+" Move line with alt + arrow keys up/down
+nnoremap <M-Down> :m .+1<CR>==
+nnoremap <M-Up> :m .-2<CR>==
+inoremap <M-Down> <Esc>:m .+1<CR>==gi
+inoremap <M-Up> <Esc>:m .-2<CR>==gi
+vnoremap <M-Down> :m '>+1<CR>gv=gv
+vnoremap <M-Up> :m '<-2<CR>gv=gv''
+
+
 " Enable vim-closetag for specific file types
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.php,*.jsx,*.js'
 let g:closetag_filetypes = 'html,xhtml,phtml,php,javascriptreact,javascript'
