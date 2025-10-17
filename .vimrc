@@ -30,7 +30,7 @@ set expandtab
 set autoindent
 set showmatch
 set shortmess+=c
-inoremap { {<CR>}<Esc>ko
+inoremap { {}<Left>
 inoremap [ []<Left>
 inoremap ( ()<Left>
 inoremap ' ''<Left>
