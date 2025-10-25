@@ -4,7 +4,8 @@
 " Plugins
 
 call plug#begin('~/.vim/plugged')
-Plug 'gruvbox-community/gruvbox'
+"Plug 'gruvbox-community/gruvbox'
+Plug 'cocopon/iceberg.vim'
 Plug 'preservim/nerdtree'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-scripts/AutoComplPop'
@@ -43,19 +44,11 @@ nnoremap ggg :execute "normal! " . (line("$") / 2) . "G"<CR>
 
 " +++++++++++++++++++++++++++++++"
 
-" Enable 256-color mode if GUI is not running
-if !has('gui_running')
-   set t_Co=256
- endif
-
-if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
-endif
-
 set background=dark
-colorscheme gruvbox
+
+"colorscheme gruvbox
+colorscheme iceberg
+
 filetype plugin indent on
 
 " +++++++++++++++++++++++++++++++"
@@ -64,7 +57,6 @@ filetype plugin indent on
 augroup CustomAutoCommands
     autocmd!
     " Cursorline Highlight
-    autocmd ColorScheme * highlight Cursorline cterm=bold ctermbg=black
     autocmd BufNewFile,BufRead *.php set filetype=php
    " Refreshing nerdtree when a file is saved, added or changed
     autocmd BufWritePost * NERDTreeRefreshRoot
